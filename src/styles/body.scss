@@ -1,0 +1,21 @@
+.layout{
+    margin: 2% 0 0 17%;
+    position: relative;
+}
+
+.user-dash{
+ display: flex;
+ align-items: center;
+ position: absolute;
+ left: 70%;
+
+ h4{
+    font-family: 'Avenir LT Std';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 25px;
+    color: rgba(56, 47, 144, 0.6);
+    
+ }
+}

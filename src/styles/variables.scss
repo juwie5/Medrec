@@ -25,7 +25,7 @@
 
 $defaults-fonts: 'Lato', sans-serif;
 $white: #FFFFFF;
-$grey: rgba(56, 58, 71, 0.8);
+$grey: #F5F5FB;
 $grey2: rgba(56, 58, 71, 0.6);
 $grey-background: #F8F8FA;
 
@@ -34,9 +34,7 @@ body{
     padding: 0;
     margin: 0;
     font-family: $defaults-fonts;
+    background-color: $grey;
 }
 
 
-.contain{
-    padding: 2% 5% 0;
-}

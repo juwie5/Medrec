@@ -1,6 +1,15 @@
 <template>
-  <div>
-      <h5> Body</h5>
+  <div class="layout">
+      <div class="user-dash">
+          <h4 class="pr-10">Take a tour</h4>
+          <img  class="pr-10" src="../assets/msg-alert.svg" alt="">
+          <img  class="pr-10" src="../assets/bell.svg" alt="">
+          <img  src="../assets/user-img.png" alt="">
+      </div>
+
+    <div>
+        
+    </div>
   </div>
 </template>
 
