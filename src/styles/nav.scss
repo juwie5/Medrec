@@ -1,0 +1,41 @@
+.navigate {
+    width: 15%;
+    background-color: rgb(255, 255, 255);
+    overflow: hidden;
+    padding-top: 7%;
+    text-align: center;
+    position: fixed;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+#li-one{
+    color: $white;
+    background-color: #2A36A4;  
+    font-weight: 700; 
+}
+.nav-list li{
+  padding: 15px 20px;
+  color: #A0A0A0;
+  display: flex;
+  justify-content: flex-start;
+  img {
+    margin-right: 15px;
+  }
+  font-family: 'Product Sans';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+#arrow{
+    margin: 0 0 0 45%;
+}
+
+.div{
+    opacity: 0.7;
+    border: 1px soli
