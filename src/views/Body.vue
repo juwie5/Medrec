@@ -19,7 +19,7 @@
 </template>
 
 <script>
- import { getRecords } from "@/services/service.js"
+import { getRecords } from "@/services/service.js"
 export default {
     name: 'Body',
     data: () =>{

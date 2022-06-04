@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { login } from '@/services/service.js'
+import { login } from '@/services/auth.js'
 import Navbar from '../views/Navbar.vue'
 import Body from '../views/Body.vue'
 export default {
@@ -16,14 +16,13 @@ export default {
     Body
   },
   methods:{
-    getToken(){
-      
-      login()
-    }
+    // getToken(){
+    //   login()
+    // }
   },
-  mounted(){
-    // this.getToken()
-  }
+  created(){
+  //    this.getToken()
+   }
   
 }
 </script>
