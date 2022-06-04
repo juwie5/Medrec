@@ -15,7 +15,28 @@
     font-weight: 900;
     font-size: 18px;
     line-height: 25px;
-    color: rgba(56, 47, 144, 0.6);
-    
+    color: rgba(56, 47, 144, 0.6);  
  }
+}
+
+.user-content{
+    padding-top: 5%;
+
+    h1{
+    font-family: 'Avenir LT Std';
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 44px;
+    margin-bottom: 10px;
+    color: $purple;
+    }
+
+    p{
+    font-family: 'Avenir LT Std';
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: 0.3px;
+    color: $grey2;
+    }
 }

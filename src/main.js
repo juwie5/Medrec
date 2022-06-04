@@ -2,5 +2,15 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import './styles/app.css'
+import axios from 'axios'
 
-createApp(App).use(router).mount('#app')
+
+
+axios.defaults.baseURL = 'https://testdrive.kompletecare.com/api/';
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+
+const app = createApp(App)
+
+
+app.use(router)
+app.mount('#app')

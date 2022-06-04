@@ -1,13 +1,12 @@
 <template>
     <div>
-      
       <Navbar/>
       <Body/>
-      
     </div>
 </template>
 
 <script>
+import { login } from '@/services/service.js'
 import Navbar from '../views/Navbar.vue'
 import Body from '../views/Body.vue'
 export default {
@@ -15,6 +14,15 @@ export default {
   components: {
     Navbar,
     Body
+  },
+  methods:{
+    getToken(){
+      
+      login()
+    }
+  },
+  mounted(){
+    // this.getToken()
   }
   
 }
