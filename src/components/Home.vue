@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { login } from '@/services/auth.js'
+import { mapActions } from 'vuex'
 import Navbar from '../views/Navbar.vue'
 import Body from '../views/Body.vue'
 export default {
@@ -16,12 +16,16 @@ export default {
     Body
   },
   methods:{
-    // getToken(){
-    //   login()
-    // }
+    ...mapActions({
+      login: 'auth/login'
+    }),
+
+    getToken(){
+      this.login()
+    }
   },
   created(){
-  //    this.getToken()
+      this.getToken()
    }
   
 }
