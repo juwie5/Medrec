@@ -119,3 +119,25 @@
     float: right;
 }
 
+.status{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 500px;
+   background-color: #FFFFFF;
+   margin-top: 50px;
+   border-radius: 5px;
+   
+}
+
+.modal{
+    position: fixed;
+    left: 0;
+    top:0;
+    height: 100%;
+    width: 100%;   
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}

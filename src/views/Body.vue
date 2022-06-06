@@ -39,10 +39,12 @@
             </div>
             <button class="btn" @click="sendRecords()">Save and Send</button>
         </div>  
-
-        <div class="status">
-            <h3 class="cnt-h3"> Record added sucessfully</h3>
+        <div @click="modal = !modal" v-if="modal" class="modal">
+            <div class="status">
+                 <h3 class="cnt-h3"> Record added sucessfully</h3>
+            </div>
         </div>
+        
         
   </div>
 </template>
@@ -57,7 +59,8 @@ export default {
            filterData: '',
            Developer: 'Developer',
            ctScan: '',
-           Mri: ''
+           Mri: '',
+           modal: false
         }
     },
     methods:{
@@ -86,6 +89,7 @@ export default {
         async sendRecords(){
             const REQENDPOINT = "https://testdrive.kompletecare.com/api/investigations"
             const TOKEN = localStorage.getItem('token')
+            
 
            var data = new FormData();
             data.append('developer', this.Developer);
@@ -104,12 +108,14 @@ export default {
             axios(config)
             .then(function (response) {
             console.log(JSON.stringify(response.data));
+            
             })
             .catch(function (error) {
             console.log(error);
             });
-                    }
-                }
+            this.modal = true
+        },
+    }
             
     
 }
