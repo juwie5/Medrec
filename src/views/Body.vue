@@ -13,11 +13,13 @@
     <div class="cnt-body">
       <div v-for="item in data" :key="item.id">
             <h3 class="cnt-h3">{{item.title}}</h3>
-            <div class="cnt-item">
-                <input type="checkbox" id="">
-                <label class="cnt-label">{{item.investigations.every['title']}}</label>
+            <div  class="cnt-item">
+                <div v-for="option in item.investigations" :key="option.id">
+                <input type="checkbox" :id="`option_${option.id}`" v-model="investigations[option.id]">
+                <label :for="`option_${option.id}`" class="cnt-label">{{option.title}}</label>
             </div>
-            <hr/>
+            </div>
+           <hr/>
         </div>
         <div class="cnt-select">
                 <div>
@@ -60,6 +62,8 @@ export default {
            Developer: 'Developer',
            ctScan: '',
            Mri: '',
+           investigations: [],
+
            modal: false
         }
     },
@@ -87,33 +91,34 @@ export default {
             }
         },
         async sendRecords(){
-            const REQENDPOINT = "https://testdrive.kompletecare.com/api/investigations"
-            const TOKEN = localStorage.getItem('token')
+        //     const REQENDPOINT = "https://testdrive.kompletecare.com/api/investigations"
+        //     const TOKEN = localStorage.getItem('token')
             
 
-           var data = new FormData();
-            data.append('developer', this.Developer);
-            data.append('mri', this.ctScan);
-            data.append('ctscan', this.Mri);
-            data.append('investigations[2]', '1');
+        //    var data = new FormData();
+        //     data.append('developer', this.Developer);
+        //     data.append('mri', this.ctScan);
+        //     data.append('ctscan', this.Mri);
+        //     data.append('investigations[2]', '1');
 
-            var config = {
-            method: 'post',
-            url: `${REQENDPOINT}`,
-            headers: { 
-                'Authorization': `Bearer ${TOKEN}`, 
-            },
-            data : data
-            };
-            axios(config)
-            .then(function (response) {
-            console.log(JSON.stringify(response.data));
+        //     var config = {
+        //     method: 'post',
+        //     url: `${REQENDPOINT}`,
+        //     headers: { 
+        //         'Authorization': `Bearer ${TOKEN}`, 
+        //     },
+        //     data : data
+        //     };
+        //     axios(config)
+        //     .then(function (response) {
+        //     console.log(JSON.stringify(response.data));
             
-            })
-            .catch(function (error) {
-            console.log(error);
-            });
-            this.modal = true
+        //     })
+        //     .catch(function (error) {
+        //     console.log(error);
+        //     });
+        //     this.modal = true
+            console.log(this.investigations)
         },
     }
             
