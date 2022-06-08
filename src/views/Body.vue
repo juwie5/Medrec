@@ -13,9 +13,9 @@
     <div class="cnt-body">
       <div v-for="item in data" :key="item.id">
             <h3 class="cnt-h3">{{item.title}}</h3>
-            <div  class="cnt-item">
+            <div class="cnt-item">
                 <div v-for="option in item.investigations" :key="option.id">
-                <input type="checkbox" :id="`option_${option.id}`" v-model="investigations[option.id]">
+                <input type="checkbox" :id="`option_${option.id}`" v-model="selectedIds[option.id]">
                 <label :for="`option_${option.id}`" class="cnt-label">{{option.title}}</label>
             </div>
             </div>
@@ -43,7 +43,7 @@
         </div>  
         <div @click="modal = !modal" v-if="modal" class="modal">
             <div class="status">
-                 <h3 class="cnt-h3"> Record added sucessfully</h3>
+                 <h3 class="cnt-h3">Record added sucessfully</h3>
             </div>
         </div>
         
@@ -55,15 +55,14 @@
 import axios from 'axios'
 export default {
     name: 'Body',
-    data: () =>{
+    data: () => {
         return{
            data: '',
            filterData: '',
            Developer: 'Developer',
            ctScan: '',
            Mri: '',
-           investigations: [],
-
+           selectedIds: {},
            modal: false
         }
     },
@@ -81,7 +80,7 @@ export default {
                     crossdomain: true
                 })
                 if (res.status == 200){
-                    console.log(res.data.data)
+                    // console.log(res.data.data)
                     this.data = res.data.data
                 } else {
                     return null
@@ -91,38 +90,42 @@ export default {
             }
         },
         async sendRecords(){
-        //     const REQENDPOINT = "https://testdrive.kompletecare.com/api/investigations"
-        //     const TOKEN = localStorage.getItem('token')
-            
+            const REQENDPOINT = "https://testdrive.kompletecare.com/api/investigations"
+            const TOKEN = localStorage.getItem('token')
+           var data = new FormData();
+            data.append('developer', this.Developer);
+            data.append('mri', this.ctScan);
+            data.append('ctscan', this.Mri);
+            let keys = Object.keys(this.selectedIds)
 
-        //    var data = new FormData();
-        //     data.append('developer', this.Developer);
-        //     data.append('mri', this.ctScan);
-        //     data.append('ctscan', this.Mri);
-        //     data.append('investigations[2]', '1');
+            keys.forEach((id, index) => {
+              data.append(`investigations[${index}]`, id)
+            })
 
-        //     var config = {
-        //     method: 'post',
-        //     url: `${REQENDPOINT}`,
-        //     headers: { 
-        //         'Authorization': `Bearer ${TOKEN}`, 
-        //     },
-        //     data : data
-        //     };
-        //     axios(config)
-        //     .then(function (response) {
-        //     console.log(JSON.stringify(response.data));
-            
-        //     })
-        //     .catch(function (error) {
-        //     console.log(error);
-        //     });
-        //     this.modal = true
-            console.log(this.investigations)
+            var config = {
+            method: 'post',
+            url: `${REQENDPOINT}`,
+            headers: { 
+                'Authorization': `Bearer ${TOKEN}`, 
+            },
+            data : data
+            };
+            axios(config)
+            .then(function (response) {
+            // console.log(JSON.stringify(response.data));
+            })
+            .catch(function (error) {
+            // console.log(error);
+            });
+            this.modal = true  
+            this.selectedIds = {}
+            this.ctScan = ''
+            this.Mri = ''  
         },
-    }
-            
-    
+    },
+    mounted(){
+        this.getRecords()
+    }  
 }
 </script>
 
